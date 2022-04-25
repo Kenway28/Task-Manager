@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="css/My Framework.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="control-tools">
+        <div class="input-field">
+          <input
+            type="text"
+            name=""
+            id="addNew"
+            placeholder="Type Task Title"
+          />
+        </div>
+        <i class="material-icons filter-tag">filter_list</i>
+        <ul class="filter">
+          <li data-filter="all" class="active">All</li>
+          <li data-filter="to do">to do</li>
+          <li data-filter="in progress">In progress</li>
+          <li data-filter="completed">Compeleted</li>
+        </ul>
+      </div>
+
+      <div class="task-list"></div>
+      <div class="overlay">
+        <div class="task-details">
+          <input type="text" name="" id="details-title" placeholder="title" />
+          <textarea
+            name=""
+            id="description"
+            placeholder="description"
+          ></textarea>
+          <div class="stat">
+            <span>to do</span>
+            <span>in progress</span>
+            <span>completed</span>
+          </div>
+
+          <h3>Attachement <input type="file" name="" id=""></h3>
+          <button id="addTask " class="add-sub-task">
+            <span class="material-icons"> add </span> Add Subtask
+          </button>
+          <ul class="subtasks"></ul>
+        
+          <i class="material-icons close-panel">close</i>
+          <i class="material-icons delete-task">delete</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- resurces -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
