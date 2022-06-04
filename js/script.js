@@ -9,7 +9,6 @@ let overlay = document.querySelector(".overlay");
 let filterMenu = document.querySelector(".filter");
 let filterTag = document.querySelector(".filter-tag");
 
-
 filterTag.addEventListener("click", () => {
   filterMenu.classList.toggle("d-flex");
 });
@@ -36,7 +35,6 @@ function filterData() {
     } else {
       task.classList.add("filtered");
     }
-    //// filterTag.innerHTML = selected.dataset.filter;
   });
 }
 
@@ -70,12 +68,6 @@ function getSubtasks() {
   Array.from(sublist.children).forEach((el) => {
     subMap.set(el.innerHTML.trimEnd(), el.className);
   });
-
-  // if (sublist.children.length != 0) {
-  //   return subMap;
-  // } else {
-  //   return null;
-  // }
   return subMap;
 }
 function addTasksToPage(dataArray) {
@@ -112,21 +104,9 @@ function taskHeading(div, task) {
   let head = createComponent("div", "task-heading d-flex", "");
   let title = createComponent("h3", "title", task.title);
   let taskDate = createComponent("span", "date", "");
-
-  let dateformat = `${new Date(task.id).toLocaleDateString("en-US", {
-    // weekday: "short",
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  })}`.replaceAll(",", "");
-
-  let timeformat = `${new Date(task.id).toLocaleTimeString("en-US", {
-    hour: "numeric",
-    hour12: false,
-    minute: "numeric",
-    // //second: "numeric",
-  })}`.replaceAll("/", " ");
-  taskDate.innerHTML = `${dateformat} . ${timeformat}`;
+  let dateformat = moment(task.id).format("MMM Do YYYY, HH:mm");
+  console.log(moment().add(28, 'days').calendar());
+  taskDate.innerHTML = `${dateformat}`;
   head.appendChild(title);
   head.appendChild(taskDate);
   head.appendChild(createComponent("i", "material-icons detail", "more_vert"));
@@ -152,39 +132,7 @@ addSub.onclick = function () {
 
   li.setAttribute("contenteditable", true);
   subTaskEvents(li, sublist);
-  // li.addEventListener("click", () => {
-  //   li.classList.toggle("done");
-  //   targetSubtask(li);
-  // });
-  // li.addEventListener("keypress", (event) => {
-  //   if (event.key == "Enter") {
-  //     li.blur();
-  //     li.setAttribute("contenteditable", false);
-  //     // let targetID = deleteTask.parentElement.dataset.id;
-  //     // mainArray.forEach((task) => {
-  //     //   if (+targetID == task.id) {
-  //     //     task.subtasks = JSON.stringify(Object.fromEntries(getSubtasks()));
-  //     //     // console.log(task.subtasks);
-  //     //   }
-  //     // });
-  //     // // console.log(mainArray);
-  //     // addTasksToPage(mainArray);
-  //     // saveData(mainArray);
-  //     // li.blur();
-  //     // console.log(targetID);
-  //   }
-  // });
-  // li.addEventListener("dblclick", () => {
-  //   li.remove();
-  // });
-  // li.onblur = (ev) => {
-  //   li.setAttribute("contenteditable", false);
-  //   Array.from(sublist.children).forEach((el) => {
-  //     if (el.innerHTML == "" && sublist.children) {
-  //       el.remove();
-  //     }
-  //   });
-  // };
+ 
   li.focus();
 };
 
@@ -215,8 +163,6 @@ function createComponent(type, className, innerHTML) {
   element.innerHTML = `${innerHTML}`;
   return element;
 }
-
-/*** old script 381 */
 
 let AddNewTask = document.querySelector("#addNew");
 let detailsPanel = document.querySelector(".task-details");
@@ -251,7 +197,6 @@ taskList.addEventListener("click", (e) => {
       if (+targetID == task.id) {
         detailsTitle.value = task.title;
         description.value = task.description;
-        // console.log(task.stat);
         taskStat.forEach((stat) => {
           stat.classList.remove("selected-stat");
           if (stat.innerHTML === task.stat) {
@@ -261,13 +206,10 @@ taskList.addEventListener("click", (e) => {
         sublist.innerHTML = "";
         if (task.subtasks != "") {
           let subData = Object.entries(JSON.parse(task.subtasks));
-          // console.log(subData.length);
-          // if (subData.length > 0) {
           subData.map((el) => {
             let li = createComponent("li", el[1], el[0]);
             subTaskEvents(li, sublist);
           });
-          // }
         }
       }
     });
@@ -292,7 +234,6 @@ function createInfoSection(task, parag, subtasks) {
     let list = createComponent("i", "material-icons", "checklist");
     info.appendChild(list);
     let subData = Object.entries(JSON.parse(subtasks));
-    // console.log(subData);
     let doneSize = Array.from(subData).filter((e) => {
       if (e[1] == "done") {
         return e;
