@@ -15,11 +15,11 @@ body {
   max-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
-  /* background: #26A69A; */
-  background: radial-gradient(#6DD5FA, #49a2bd);
+  background-color: #c5d6f0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .container {
@@ -27,6 +27,11 @@ body {
   height: 100%;
   overflow: hidden;
   flex-direction: column;
+  width: 800px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000073;
+  padding: 20px;
 }
 
 .tools {
@@ -55,11 +60,12 @@ body {
   width: 150px;
   border-radius: 8px;
   position: absolute;
-  top: 16px;
+  top: 0px;
   right: 0px;
   z-index: 50;
   padding: 10px 15px;
   text-transform: capitalize;
+  border: 2px solid #ddd;
 }
 
 .filter li {
@@ -72,7 +78,8 @@ body {
 
 .task-list {
   overflow: auto;
-  gap: 15px;
+  gap: 10px;
+  padding: 5px;
 }
 
 .task-list [data-stat="to do"] {
@@ -101,6 +108,7 @@ body {
   overflow: hidden;
   margin-bottom: 10px;
   cursor: pointer;
+  box-shadow: 0 0 5px #3333335b;
 }
 
 .task-list .task.filtered {
@@ -125,7 +133,6 @@ body {
 .task-list .task .task-heading .date {
   font-size: 12px;
   color: #999;
-  /* font-weight: bold; */
   margin-right: 30px;
   display: flex;
   align-items: center;
@@ -133,9 +140,9 @@ body {
 
 .task-list .task .task-heading i {
   position: absolute;
-  right: 6px;
+  right: 10px;
   top: 10px;
-  font-size: 20px;
+  font-size: 16px;
   color: #666;
 }
 
@@ -152,7 +159,7 @@ body {
   position: relative;
 }
 
-.task-details>* {
+.task-details > * {
   background-color: transparent;
 }
 
@@ -163,23 +170,25 @@ body {
 
 .task-details input,
 .task-details textarea {
-  padding: 5px;
+  padding: 10px;
   width: 88%;
   font-size: 16px;
   border: none;
   resize: none;
   margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
 }
 
 .task-details textarea {
-  height: 100px;
+  height: 120px;
 }
 
 .task-details input:focus,
 .task-details textarea:focus {
-  background-color: #cec7c741;
   caret-color: #555;
   color: #555;
+
 }
 
 .task-details button {
@@ -222,63 +231,29 @@ body {
 
 .subtasks {
   flex-direction: column;
-  /* margin: 10px 0 0; */
-  /* padding: 10px 0; */
   max-height: 230px;
   overflow: auto;
-  /* border-top: 1px solid #929e9b; */
 }
 
 .subtasks li {
   color: #616161;
-  padding: 5px 10px 5px 35px;
+  padding: 5px;
   position: relative;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
+  border-radius: 10px;
 }
 
-/* .subtasks li span {
-  width: 100%;
-} */
 .subtasks li:focus {
-  padding: 5px 10px 5px;
-  background-color: rgba(153, 153, 153, 0.25);
+  padding: 10px;
+  border: 2px solid #ccc;
 }
 
-.subtasks li:not(:focus)::before {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 5px;
-  font-family: "Material Icons";
-  content: "\e836";
-  font-weight: 900;
-  color: #fc5f9b;
-  z-index: 5;
-  font-size: 18px;
-}
 
 .subtasks li.done {
   position: relative;
+  text-decoration: line-through;
+  color: #cbcbcb;
 }
 
-.subtasks li.done::before {
-  animation: done 0.1s ease forwards;
-}
-
-@keyframes done {
-  0% {
-    content: "\e836";
-    transform: translateY(-50%) scale(0);
-  }
-
-  100% {
-    content: "\e876";
-    color: #388e3c;
-    transform: translateY(-50%) scale(1);
-  }
-}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -309,39 +284,45 @@ input[type="datetime-local"] {
 .task .info {
   padding: 5px 10px 10px;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   height: max-content;
 }
 
 .task .info i {
   color: #616161;
-  font-size: 21px;
+  font-size: 16px;
 }
 
 .info .tag {
   color: var(--main-color);
-  /* padding: 2px 5px; */
+  background-color: var(--light-color);
   font-size: 12px;
-  width: 80px;
+  width: 90px;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: 600;
 }
 
 /********** upgrated style ************/
 
 .control-tools {
-  padding: 15px 0px 5px;
   position: relative;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 0 5px 10px;
+  display: flex;
+  background-color: rgba(255, 255, 255);
 }
-
+.input-field {
+  flex: 1;
+}
 .input-field input {
   padding: 15px;
   width: 100%;
-  backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
-  margin-bottom: 10px;
   border: none;
   font-size: 18px;
+  border-radius: 8px;
 }
 
 .overlay {
@@ -350,9 +331,8 @@ input[type="datetime-local"] {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(114, 106, 106, 0.651);
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  background-color: #ccccccc5;
+
   z-index: 4;
   display: none;
   justify-content: center;
@@ -364,13 +344,16 @@ input[type="datetime-local"] {
   top: 20px;
   right: 20px;
   cursor: pointer;
+  font-size: 24px;
+  color: #666;
 }
 
 .task-details .delete-task {
   position: absolute;
-  top: 20px;
+  top: 23px;
   right: 50px;
   cursor: pointer;
+  font-size: 18px;
   color: #fc5f9b;
 }
 
@@ -380,10 +363,10 @@ input[type="datetime-local"] {
 
 progress {
   -webkit-appearance: none;
-  width: 100px;
+  width: 200px;
   position: relative;
   overflow: visible;
-  max-height: 6px;
+  max-height: 10px;
 }
 
 progress::before {
@@ -399,7 +382,7 @@ progress::before {
 
 progress::-webkit-progress-bar {
   border-radius: 100px;
-  height: 6px;
+  height: 8px;
   background-color: #dddddd;
 }
 
@@ -424,20 +407,14 @@ progress::-webkit-progress-value {
 }
 
 .filter-icon {
-  position: absolute;
-  top: 30px;
-  right: 15px;
+
+  width: 57px;
+  height: 57px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   color: #616161;
-  font-size: 16px;
-}
-
-.filter-tag {
-  position: absolute;
-  top: 33px;
-  right: 20px;
-
-  color: #616161a4;
-  font-size: 14px;
+  font-size: 20px;
 
   text-transform: capitalize;
 }

@@ -7,9 +7,9 @@ let filter = document.querySelectorAll(".filter li");
 let closePanel = document.querySelector(".close-panel");
 let overlay = document.querySelector(".overlay");
 let filterMenu = document.querySelector(".filter");
-let filterTag = document.querySelector(".filter-tag");
+let filterIcon = document.querySelector(".filter-icon");
 
-filterTag.addEventListener("click", () => {
+filterIcon.addEventListener("click", () => {
   filterMenu.classList.toggle("d-flex");
 });
 
@@ -109,7 +109,7 @@ function taskHeading(div, task) {
   taskDate.innerHTML = `${dateformat}`;
   head.appendChild(title);
   head.appendChild(taskDate);
-  head.appendChild(createComponent("i", "material-icons detail", "more_vert"));
+  head.appendChild(createComponent("i", "fa-solid fa-ellipsis-vertical detail", ""));
   div.appendChild(head);
 }
 function taskProgress(task, progressValue) {
@@ -223,15 +223,15 @@ function createInfoSection(task, parag, subtasks) {
   let tag = createComponent(
     "span",
     "tag",
-    `#${task.dataset.stat}`.replace(" ", "")
+    `${task.dataset.stat}`.replace(" ", "")
   );
   info.appendChild(tag);
   if (parag !== "") {
-    let note = createComponent("i", "material-icons", "notes");
+    let note = createComponent("i", "fa-regular fa-note-sticky", "");
     info.appendChild(note);
   }
   if (subtasks != "" && subtasks != "{}") {
-    let list = createComponent("i", "material-icons", "checklist");
+    let list = createComponent("i", "fa-solid fa-list-check", "");
     info.appendChild(list);
     let subData = Object.entries(JSON.parse(subtasks));
     let doneSize = Array.from(subData).filter((e) => {

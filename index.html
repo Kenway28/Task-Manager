@@ -4,11 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager</title>
-    <link rel="stylesheet" href="css/My Framework.css" />
+    <!-- <link rel="stylesheet" href="css/My Framework.css" /> -->
     <link rel="stylesheet" href="css/main.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
   </head>
   <body>
@@ -22,7 +29,7 @@
             placeholder="Type Task Title"
           />
         </div>
-        <i class="material-icons filter-tag">filter_list</i>
+        <i class="fa-solid fa-bars filter-icon"></i>
         <ul class="filter">
           <li data-filter="all" class="active">All</li>
           <li data-filter="to do">to do</li>
@@ -46,14 +53,12 @@
             <span>completed</span>
           </div>
 
-          <h3>Attachement <input type="file" name="" id="" /></h3>
           <button id="addTask " class="add-sub-task">
-            <span class="material-icons"> add </span> Add Subtask
+            <i class="fa-solid fa-plus"></i> Add Subtask
           </button>
           <ul class="subtasks"></ul>
-
-          <i class="material-icons close-panel">close</i>
-          <i class="material-icons delete-task">delete</i>
+          <i class="fa-solid fa-xmark close-panel"></i>
+          <i class="fa-solid fa-trash delete-task"></i>
         </div>
       </div>
     </div>
